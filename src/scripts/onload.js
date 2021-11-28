@@ -4,7 +4,7 @@
 import $ from 'jquery';
 
 window.onload = () => {
-  const helloString = $('#hello');
-  helloString.fadeOut();
-  helloString.fadeIn();
+  const el = $('#hello');
+  el.fadeOut();
+  el.fadeIn();
 };
