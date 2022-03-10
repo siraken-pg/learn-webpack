@@ -1,5 +1,3 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -10,8 +8,8 @@ const stylesHandler = isProduction
   ? MiniCssExtractPlugin.loader
   : 'style-loader';
 
-const config = {
-  entry: './src/scripts/index.js',
+const config: any = {
+  entry: './src/scripts/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -35,6 +33,10 @@ const config = {
         loader: 'babel-loader',
       },
       {
+        test: /\.(ts|tsx)$/i,
+        loader: 'ts-loader',
+      },
+      {
         test: /\.css$/i,
         use: [stylesHandler, 'css-loader'],
       },
@@ -50,6 +52,9 @@ const config = {
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
 };
 
